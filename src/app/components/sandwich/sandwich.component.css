@@ -1,0 +1,63 @@
+.bg-image {
+    background: linear-gradient(-150deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.8) 80%),
+        url(../../../assets/background.jpg);
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
+
+h1 {
+    font-size: 36px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.custom-btn {
+    width: 150px;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px);
+    font-size: 40px;
+    font-weight: 600;
+    border-radius: 60px;
+}
+
+.custom-btn:hover {
+    background-color: #72d375;
+    color: black;
+    border: 2px solid #72d375;
+}
+
+.custom-btn:focus {
+    background-color: #72d375;
+    color: black;
+    border: 2px solid #72d375;
+}
+
+label {
+    text-transform: capitalize;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* CARD */
+
+.custom-card {
+    max-width: 500px;
+    width: 100%;
+    background-color: rgba(15, 94, 81, 0.6);
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,67 @@
+.title {
+    align-self: flex-start;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 20px;
+    padding: 0;
+    margin: 10px 0;
+    text-shadow: none;
+    max-width: 180px;
+}
+
+h2 {
+    text-align: right;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    width: 75px;
+}
+
+.title-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+}
+
+mat-icon {
+    color: #72d375;
+    align-self: flex-start;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+}
+
+mat-icon:hover {
+    color: white;
+    cursor: pointer;
+    transition: linear 0.1s;
+}
+
+.ingredients {
+    width: 90%;
+    height: 100px;
+}
+
+.card-collapse {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rotate {
+    transform: rotate(-180deg);
+}

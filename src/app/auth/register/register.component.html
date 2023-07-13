@@ -1,0 +1,70 @@
+<div class="bg-image">
+  <div class="nav-placeholder"></div>
+
+  <div class="container-fluid d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 58px);">
+    <div class="container" style="max-width: 400px;">
+      <div class="card">
+
+        <div class="card-header text-center">
+          <h1>Registration</h1>
+        </div>
+
+        <div class="card-body">
+
+          <form class="d-flex flex-column" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label for="name">Name<span> <b>*</b></span></label>
+              <input formControlName="firstName" type="text" id="name" class="form-control mb-3"
+                placeholder="First Name">
+            </div>
+
+            <div class="form-group">
+              <input formControlName="lastName" type="text" class="form-control mb-3" placeholder="Last Name">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email<span> <b>*</b></span></label>
+              <input formControlName="email" type="email" id="email" class="form-control mb-3" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password<span> <b>*</b></span></label>
+              <input formControlName="password" type="password" id="password" class="form-control mb-3"
+                placeholder="Password">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone<span> <b>*</b></span></label>
+              <input formControlName="phone" type="tel" id="phone" class="form-control mb-3" placeholder="Phone Number">
+            </div>
+
+            <div formGroupName="address">
+              <div class="form-group">
+                <label for="address">Address<span> <b>*</b></span></label>
+                <input formControlName="zipCode" type="text" id="address" class="form-control mb-3"
+                  placeholder="ZIP Code">
+              </div>
+
+              <div class="form-group">
+                <input formControlName="city" type="text" class="form-control mb-3" placeholder="City">
+              </div>
+
+              <div class="form-group">
+                <input formControlName="street" type="text" class="form-control mb-3" placeholder="Street">
+              </div>
+
+              <div class="form-group">
+                <input formControlName="houseNumber" type="text" class="form-control mb-3" placeholder="House Number">
+              </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary btn-lg mt-2 align-self-center">Register</button>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,111 @@
+<div class="bg-image"></div>>
+<div class="nav-placeholder"></div>
+
+<div class="container-fluid d-flex flex-column align-items-center m-0 p-0 content">
+
+  <!-- CREATE BUTTON -->
+
+  <div *ngIf="!createModule" class="row my-3">
+    <button (click)="createModule = !createModule" class="btn btn-primary btn-lg custom-btn">+</button>
+  </div>
+
+  <!-- CREATE MODULE *ngIf -->
+
+  <div *ngIf="createModule" class="container mt-4" style="max-width: 400px;">
+    <div class="card">
+
+      <div class="card-header text-center">
+        <h1>Ingredients:</h1>
+      </div>
+      <div class="card-body">
+
+        <!-- FORM -->
+
+        <form class="d-flex flex-column" [formGroup]="sandwichForm" (ngSubmit)="createSandwich()">
+
+          <!-- INPUT -->
+
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input formControlName="name" type="text" class="form-control" id="name" placeholder="Sandwich Name"
+              required>
+          </div>
+
+          <!-- SELECT START-->
+
+          <div class="form-group">
+            <label for="bread">Bread:</label>
+            <select class="form-control mb-3" id="bread" formControlName="bread">
+              <option value="" selected hidden>Select an ingredient</option>
+              <option *ngFor="let ingredient of ingredients.get('bread')" [value]="ingredient.name">
+                {{ingredient.name}} - {{ingredient.price}} Ft</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="meat">Meat:</label>
+            <select class="form-control mb-3" id="meat" formControlName="meat">
+              <option value="" selected hidden>Select an ingredient</option>
+              <option *ngFor="let ingredient of ingredients.get('meat')" [value]="ingredient.name">
+                {{ingredient.name}} - {{ingredient.price}} Ft</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cheese">Cheese:</label>
+            <select class="form-control mb-3" id="cheese" formControlName="cheese">
+              <option value="" selected hidden>Select an ingredient</option>
+              <option *ngFor="let ingredient of ingredients.get('cheese')" [value]="ingredient.name">
+                {{ingredient.name}} - {{ingredient.price}} Ft</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="vegetables">Vegetable:</label>
+            <select class="form-control mb-3" id="vegetables" formControlName="vegetables">
+              <option value="" selected hidden>Select an ingredient</option>
+              <option *ngFor="let ingredient of ingredients.get('vegetables')" [value]="ingredient.name">
+                {{ingredient.name}} - {{ingredient.price}} Ft</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="sauce">Sauce:</label>
+            <select class="form-control mb-3" id="sauce" formControlName="sauce">
+              <option value="" selected hidden>Select an ingredient</option>
+              <option *ngFor="let ingredient of ingredients.get('sauce')" [value]="ingredient.name">
+                {{ingredient.name}} - {{ingredient.price}} Ft</option>
+            </select>
+          </div>
+
+          <div *ngIf="sandwichFormError" class="form-group alert alert-danger">
+            <p class="mb-3">Name can't be more than 25 characters!</p>
+          </div>
+
+          <!-- PRICE -->
+
+          <div class="text-center mt-4">
+            <h3 class="p-3" style="background-color: rgba(0, 0, 0, 0.4);border-radius: 40px">
+              Price: {{getPrice()}} Ft
+            </h3>
+          </div>
+
+          <div class="d-flex flex-row align-items-center justify-content-around mt-4">
+            <button type="button" (click)="createModule = !createModule" class="btn btn-primary btn-lg">Close</button>
+            <button type="submit" class="btn btn-primary btn-lg">Add</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SANDWICH LIST -->
+
+  <div class="container-fluid d-flex flex-column justify-content-center align-items-center mx-0 px-0">
+    <div *ngFor="let sandwich of userSandwiches" class="custom-card p-0 m-1">
+      <app-sandwich-details [sandwich]="sandwich" style="width: 100%;"></app-sandwich-details>
+    </div>
+  </div>
+
+</div>

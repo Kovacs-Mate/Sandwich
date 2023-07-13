@@ -1,0 +1,107 @@
+<div class="bg-image">
+  <div class="nav-placeholder"></div>
+
+
+  <div class="container-fluid d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 58px);">
+    <div class="container" style="max-width: 400px;">
+
+      <!-- ACCOUNT SETTINGS -->
+
+      <div *ngIf="!deleteAccTemplate" class="card p-3">
+
+        <div class="card-header text-center">
+          <h1>User Settings</h1>
+        </div>
+
+        <div class="card-body">
+          <form class="d-flex flex-column" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label for="name">Name<span> <b>*</b></span></label>
+              <input formControlName="firstName" type="text" id="name" class="form-control mb-3"
+                [placeholder]="user.firstName" [(ngModel)]="user.firstName">
+            </div>
+
+            <div class="form-group">
+              <input formControlName="lastName" type="text" class="form-control mb-3" [placeholder]="user.lastName"
+                [(ngModel)]="user.lastName">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone<span> <b>*</b></span></label>
+              <input formControlName="phone" type="text" id="phone" class="form-control mb-3" [placeholder]="user.phone"
+                [(ngModel)]="user.phone">
+            </div>
+
+            <div formGroupName="address">
+              <div class="form-group">
+                <label for="zipCode">Address<span> <b>*</b></span></label>
+                <input formControlName="zipCode" type="text" id="zipCode" class="form-control mb-3"
+                  [placeholder]="user.address.zipCode" [(ngModel)]="user.address.zipCode">
+              </div>
+
+              <div class="form-group">
+                <input formControlName="city" type="text" class="form-control mb-3" [placeholder]="user.address.city"
+                  [(ngModel)]="user.address.city">
+              </div>
+
+              <div class="form-group">
+                <input formControlName="street" type="text" class="form-control mb-3"
+                  [placeholder]="user.address.street" [(ngModel)]="user.address.street">
+              </div>
+
+              <div class="form-group">
+                <input formControlName="houseNumber" type="text" class="form-control mb-3"
+                  [placeholder]="user.address.houseNumber" [(ngModel)]="user.address.houseNumber">
+              </div>
+            </div>
+
+            <div *ngIf="userUpdateSuccessful" class="form-group alert alert-success text-center">Update was
+              successful!
+            </div>
+
+            <div *ngIf="formError" class="form-group alert alert-danger text-center">Fill the form correctly!
+            </div>
+
+            <div class="form-group my-4 text-center">
+              <a (click)="deleteAccTemplate = !deleteAccTemplate"
+                class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                Delete Account
+              </a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg mt-3 align-self-center">Save Changes</button>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- DELETE ACCOUNT -->
+
+      <div *ngIf="deleteAccTemplate" class="card p-3">
+
+        <div class="card-header text-center">
+          <h1>Delete Account</h1>
+        </div>
+
+        <div class="card-body">
+          <form class="d-flex flex-column" (ngSubmit)="deleteAccount()">
+
+            <div class="form-group">
+              <label for="delete">Type "DELETE"<span> <b>*</b></span></label>
+              <input [(ngModel)]="deleteConfirmed" name="delete" type="text" id="delete" class="form-control mb-3"
+                placeholder="DELETE">
+            </div>
+
+            <div *ngIf="deleteConfirmedMessage" class="form-group alert alert-danger text-center">Invalid word!
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg mt-3 align-self-center">Delete Account</button>
+            <button (click)="deleteAccTemplate = !deleteAccTemplate" type="button"
+              class="btn btn-primary btn-lg mt-3 align-self-center">Cancel</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

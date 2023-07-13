@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+
+  <a class="navbar-brand mx-3 custom-font-1" routerLink="/home">
+    <img src="../../../assets/sandwich.png" width="30" height="30" class="d-inline-block align-top pb-1 mx-1"
+      alt="Logo">
+    Sandwich</a>
+
+  <button (click)="isCollapsed = !isCollapsed" class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse justify-content-end mx-3 navbar-right"
+    id="navbarNav">
+    <ul class="navbar-nav  custom-font-2">
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a *ngIf="loggedIn" class="nav-link" routerLink="/sandwich" routerLinkActive="active">Sandwich</a>
+      </li>
+
+      <li class="nav-item">
+        <a *ngIf="loggedIn" class="nav-link" routerLink="/cart" routerLinkActive="active">Cart</a>
+      </li>
+
+      <li class="nav-item">
+        <a *ngIf="loggedIn" class="nav-link" routerLink="/userSettings" routerLinkActive="active">My Account</a>
+      </li>
+
+      <li class="nav-item">
+        <a *ngIf="!loggedIn" class="nav-link" routerLink="/login" routerLinkActive="active">Log In</a>
+      </li>
+
+      <li class="nav-item">
+        <a *ngIf="loggedIn" (click)="logout()" routerLink="/home" class="nav-link">Log
+          Out</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>

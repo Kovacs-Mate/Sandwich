@@ -10,6 +10,7 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+src/app/core/environments/environment.ts
 
 # IDEs and editors
 .idea/
