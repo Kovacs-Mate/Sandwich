@@ -1,0 +1,22 @@
+<!-- TITLE -->
+
+<div class="title">
+  <div class="title-name">
+    <h1>{{ item.name }}</h1>
+  </div>
+
+  <div class="title-buttons">
+    <div class="qtyActions">
+      <mat-icon *ngIf="item.qty === 1"
+                class="delete"
+                (click)="deleteOrder()">delete</mat-icon>
+      <mat-icon *ngIf="item.qty != 1"
+                (click)="removeQty()">remove</mat-icon>
+      <h1 class="qty">{{item.qty}}</h1>
+      <mat-icon (click)="addQty()">add</mat-icon>
+    </div>
+    <div class="price">
+      <h1>{{currentPrice()}} Ft</h1>
+    </div>
+  </div>
+</div>

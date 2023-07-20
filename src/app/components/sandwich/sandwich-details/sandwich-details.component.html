@@ -1,22 +1,55 @@
-<div class="title my-2 mx-0">
-  <div class="title-buttons">
-    <mat-icon (click)="collapseInfo = !collapseInfo"
-      [ngClass]="{'rotate' : collapseInfo === false}">expand_more</mat-icon>
-    <h1>{{sandwich.name}}</h1>
-  </div>
-  <div class="title-buttons">
-    <h2>{{sandwich.price}} Ft</h2>
-    <mat-icon>add</mat-icon>
-  </div>
+<!-- TITLE -->
+
+<div class="title">
+    <div class="title-buttons">
+        <mat-icon (click)="collapseInfo = !collapseInfo; orderInfo = true"
+                  [ngClass]="{ rotate: collapseInfo === false }">expand_more</mat-icon>
+        <h1 class="breakWord">{{ sandwich.name }}</h1>
+    </div>
+
+    <!-- PRICE INDICATOR -->
+
+    <div class="title-buttons">
+        <h1 class="priceText">{{ titlePrice }} Ft</h1>
+        <mat-icon (click)="orderInfo = !orderInfo; collapseInfo = true"
+                  [ngClass]="{ rotate: orderInfo === false }">add</mat-icon>
+    </div>
 </div>
 
-<div *ngIf="!collapseInfo" class="card-collapse">
-  <div class="ingredients">
-    <p class="fst-italic fs-4 text-decoration-underline py-0 my-1">Ingredients:</p>
-    <p>
-      {{sandwich.bread}}, {{sandwich.meat}}, {{sandwich.cheese}}, {{sandwich.vegetables}}, {{sandwich.sauce}}
-    </p>
-  </div>
+<!-- DESCRIPTION -->
 
-  <button (click)="deleteSandwich(sandwich.name)" type="button" class="btn btn-primary my-3">Delete</button>
+<div *ngIf="collapseInfo === false"
+     class="card-collapse">
+    <div class="ingredients">
+        <p class="fst-italic fs-4 text-decoration-underline py-0 my-1">Ingredients:</p>
+        <p>
+            {{ sandwich.bread }}, {{ sandwich.meat }}, {{ sandwich.cheese }},
+            {{ sandwich.vegetables }}, {{ sandwich.sauce }}
+        </p>
+    </div>
+
+    <button (click)="deleteSandwich(sandwich.name)"
+            type="button"
+            class="btn btn-primary my-3">Delete</button>
+</div>
+
+<!-- ORDER -->
+
+<div *ngIf="orderInfo === false"
+     class="card-collapse">
+    <div class="order">
+        <!-- REMOVE -->
+        <mat-icon (click)="removeQty()">remove</mat-icon>
+        <!-- QTY INDICATOR -->
+        <div class="order-input">
+            <p>Qty:</p>
+            <p class="input">{{quantity}}</p>
+        </div>
+        <!-- ADD -->
+        <mat-icon (click)="addQty()">add</mat-icon>
+    </div>
+    <!-- ORDER BTN -->
+    <button (click)="addOrder()"
+            type="button"
+            class="btn btn-primary my-3">Add to cart</button>
 </div>

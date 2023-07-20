@@ -1,5 +1,9 @@
 .bg-image {
-    background: linear-gradient(-150deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.8) 80%),
+    background: linear-gradient(
+            -150deg,
+            rgba(255, 255, 255, 0),
+            rgba(0, 0, 0, 0.8) 80%
+        ),
         url(../../../assets/background.jpg);
     height: 100vh;
     width: 100vw;
@@ -10,11 +14,6 @@
     top: 0;
     left: 0;
     z-index: -100;
-}
-
-h1 {
-    font-size: 36px;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 .custom-btn {
@@ -52,7 +51,7 @@ label {
 .custom-card {
     max-width: 500px;
     width: 100%;
-    background-color: rgba(15, 94, 81, 0.6);
+    background-color: rgba(27, 27, 27, 0.6);
     border-radius: 10px;
     backdrop-filter: blur(20px);
     display: flex;
@@ -60,4 +59,5 @@ label {
     align-items: center;
     justify-content: flex-start;
     box-shadow: 20px 20px 22px rgba(0, 0, 0, 0.2);
+    user-select: none;
 }

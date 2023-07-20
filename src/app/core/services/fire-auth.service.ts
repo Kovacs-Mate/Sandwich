@@ -13,7 +13,11 @@ export class FireAuthService {
     loginError: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     userData: any;
 
-    constructor(private afAuth: AngularFireAuth, private afDb: AngularFireDatabase, private router: Router) {
+    constructor(
+        private afAuth: AngularFireAuth,
+        private afDb: AngularFireDatabase,
+        private router: Router
+    ) {
         this.loggedIn = this.afAuth.authState.pipe(map(user => !!user));
         this.afAuth.authState.subscribe(user => {
             if (user) {
@@ -29,8 +33,6 @@ export class FireAuthService {
         this.afAuth
             .createUserWithEmailAndPassword(user.email, user.password)
             .then(userCredential => {
-                console.log("Registration successful!", userCredential);
-
                 const uid = userCredential.user?.uid;
 
                 this.afDb.object(`/users/${uid}`).set({
@@ -60,17 +62,14 @@ export class FireAuthService {
                 const user = userCredential.user;
 
                 if (user?.emailVerified) {
-                    console.log("Login Successful!");
                     this.loginError.next(false);
                     localStorage.setItem("user", JSON.stringify(user));
                     this.router.navigate(["/sandwich"]);
                 } else {
-                    console.log("Email is not verified.");
                     this.loginError.next(true);
                 }
             })
-            .catch(error => {
-                console.log(error.message);
+            .catch(() => {
                 this.loginError.next(true);
             });
     }
@@ -96,9 +95,6 @@ export class FireAuthService {
                 if (user) {
                     return user.delete();
                 }
-            })
-            .then(() => {
-                console.log("User Deleted");
             })
             .catch(error => {
                 console.error("User Delete Error: ", error.message, error);

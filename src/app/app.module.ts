@@ -24,6 +24,7 @@ import { VerifyEmailComponent } from "./auth/verify-email/verify-email.component
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FooterComponent } from './components/footer/footer.component';
 import { SandwichDetailsComponent } from './components/sandwich/sandwich-details/sandwich-details.component';
+import { OrderListComponent } from './components/cart/order-list/order-list.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { SandwichDetailsComponent } from './components/sandwich/sandwich-details
         NavbarComponent,
         VerifyEmailComponent,
         FooterComponent,
-        SandwichDetailsComponent
+        SandwichDetailsComponent,
+        OrderListComponent
     ],
     imports: [
         BrowserModule,

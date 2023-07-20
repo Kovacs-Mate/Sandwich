@@ -1,1 +1,23 @@
-<p>cart works!</p>
+<div class="bg-image"></div>
+<div class="nav-placeholder"></div>
+
+
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center mx-0 px-0 content">
+
+  <!-- LIST -->
+
+  <div *ngFor="let item of orderList"
+       class="custom-card p-0 m-1">
+    <app-order-list [item]="item"
+                    (modifyItem)="updateOrderList($event)"
+                    (deleteItem)="deleteOrder($event)"
+                    style="width: 100%;"></app-order-list>
+  </div>
+
+  <!-- TOTAL PRICE -->
+  <div class="total m-1">
+    <h1 class="m-3">Total price: {{totalPrice()}} Ft</h1>
+    <button class="btn btn-primary btn-lg mb-4"
+            type="button">Place Order</button>
+  </div>
+</div>

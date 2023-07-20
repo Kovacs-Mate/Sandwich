@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { BaseService } from "src/app/core/services/base.service";
-import { FormBuilder, FormGroup, NgModel, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { map } from "rxjs";
 import { IngredientsMap } from "src/app/shared/interfaces/ingredientsMap";
 
@@ -12,9 +12,6 @@ import { IngredientsMap } from "src/app/shared/interfaces/ingredientsMap";
 })
 export class SandwichComponent implements OnInit {
     createModule: boolean = false;
-    userUID: any;
-    user: any = {};
-    defaultPlaceholder: string = "Select an ingredient";
 
     userSandwiches: any;
     sandwichForm: FormGroup;
@@ -26,16 +23,18 @@ export class SandwichComponent implements OnInit {
     constructor(private bs: BaseService, private formBuilder: FormBuilder) {}
 
     ngOnInit(): void {
-        this.userUID = JSON.parse(localStorage.getItem("user")!)?.uid;
-        this.bs.getUser(this.userUID).subscribe(user => (this.user = user));
         this.bs
             .getAllSandwich()
             .snapshotChanges()
-            .pipe(map(ch => ch.map(c => ({ name: c.payload.key, ...c.payload.val() }))))
+            .pipe(
+                map(ch =>
+                    ch.map(c => ({ name: c.payload.key, ...c.payload.val() }))
+                )
+            )
             .subscribe(sandwiches => (this.userSandwiches = sandwiches));
 
         this.sandwichForm = this.formBuilder.group({
-            name: ["", [Validators.required, Validators.maxLength(25)]],
+            name: ["", [Validators.required, Validators.maxLength(16)]],
             price: [""],
             bread: ["", Validators.required],
             meat: [""],
@@ -51,9 +50,11 @@ export class SandwichComponent implements OnInit {
             return;
         } else {
             this.sandwichForm.value.price = this.getPrice();
-            this.bs.addSandwich(this.sandwichForm.value.name, this.sandwichForm.value);
+            this.bs.addSandwich(
+                this.sandwichForm.value.name,
+                this.sandwichForm.value
+            );
             this.sandwichForm.patchValue({ name: "" });
-            this.sandwichForm.reset();
             this.sandwichFormError = false;
             this.createModule = false;
         }

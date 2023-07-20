@@ -1,0 +1,103 @@
+.title {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 20px;
+    padding: 0;
+    margin: 0px 0;
+    text-shadow: none;
+}
+
+.title-name {
+    width: calc(100% - 188px);
+    margin-left: 10px;
+    word-break: break-all;
+}
+
+.title-buttons {
+    width: 198px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.qtyActions {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.price {
+    width: 90px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.qty {
+    width: 28px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+mat-icon {
+    color: #72d375;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+}
+
+.delete {
+    color: #d37272;
+}
+
+mat-icon:hover {
+    color: white;
+    cursor: pointer;
+    transition: linear 0.1s;
+}
+
+@media only screen and (max-width: 480px) {
+    .title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .title-name {
+        width: 100%;
+        word-break: break-all;
+        text-align: center;
+        margin: 10px 0 5px 0;
+    }
+
+    .title-buttons {
+        justify-content: center;
+        align-items: center;
+        margin: 0 0 5px 0;
+    }
+
+    .price {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+}

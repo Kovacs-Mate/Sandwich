@@ -1,5 +1,8 @@
 import { Injectable, OnInit } from "@angular/core";
-import { AngularFireDatabase, AngularFireList } from "@angular/fire/compat/database";
+import {
+    AngularFireDatabase,
+    AngularFireList
+} from "@angular/fire/compat/database";
 import { Observable, map } from "rxjs";
 import { Sandwich } from "src/app/shared/interfaces/sandwich";
 import { User } from "src/app/shared/interfaces/user";
@@ -57,7 +60,8 @@ export class BaseService {
             meat: body.meat,
             cheese: body.cheese,
             vegetables: body.vegetables,
-            sauce: body.sauce
+            sauce: body.sauce,
+            id: new Date().getTime()
         });
     }
 
