@@ -4,6 +4,7 @@ import { User } from "src/app/shared/interfaces/user";
 import { AngularFireDatabase } from "@angular/fire/compat/database";
 import { Router } from "@angular/router";
 import { BehaviorSubject, Observable, map } from "rxjs";
+import { BaseService } from "./base.service";
 
 @Injectable({
     providedIn: "root"
@@ -16,6 +17,7 @@ export class FireAuthService {
     constructor(
         private afAuth: AngularFireAuth,
         private afDb: AngularFireDatabase,
+        private bs: BaseService,
         private router: Router
     ) {
         this.loggedIn = this.afAuth.authState.pipe(map(user => !!user));
@@ -24,7 +26,7 @@ export class FireAuthService {
                 this.userData = user;
                 localStorage.setItem("user", JSON.stringify(this.userData));
             } else {
-                localStorage.setItem("user", "null");
+                localStorage.removeItem("user");
             }
         });
     }
@@ -64,6 +66,7 @@ export class FireAuthService {
                 if (user?.emailVerified) {
                     this.loginError.next(false);
                     localStorage.setItem("user", JSON.stringify(user));
+                    // this.bs.getCart();   <-- NEED FIX
                     this.router.navigate(["/sandwich"]);
                 } else {
                     this.loginError.next(true);
@@ -75,8 +78,9 @@ export class FireAuthService {
     }
 
     logout() {
+        // this.bs.updateCart();  <-- NEED FIX
+        localStorage.removeItem("orderList");
         this.afAuth.signOut();
-        localStorage.setItem("user", "null");
     }
 
     sendVerificationEmail() {

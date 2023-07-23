@@ -47,7 +47,6 @@ export class OrderListComponent implements OnInit {
         const i = 1;
 
         if (qty < 2) {
-            console.log(qty);
             this.deleteIcon = true;
         } else if (qty === minQty) {
             return;

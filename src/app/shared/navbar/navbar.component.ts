@@ -18,5 +18,12 @@ export class NavbarComponent {
 
     logout() {
         this.authService.logout();
+        this.collapse();
+    }
+
+    collapse() {
+        if (window.innerWidth <= 767) {
+            this.isCollapsed = !this.isCollapsed;
+        } else return;
     }
 }

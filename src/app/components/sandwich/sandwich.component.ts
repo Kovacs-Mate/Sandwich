@@ -13,7 +13,7 @@ import { IngredientsMap } from "src/app/shared/interfaces/ingredientsMap";
 export class SandwichComponent implements OnInit {
     createModule: boolean = false;
 
-    userSandwiches: any;
+    userSandwiches: any = [];
     sandwichForm: FormGroup;
     sandwichFormError: boolean = false;
 
@@ -26,11 +26,7 @@ export class SandwichComponent implements OnInit {
         this.bs
             .getAllSandwich()
             .snapshotChanges()
-            .pipe(
-                map(ch =>
-                    ch.map(c => ({ name: c.payload.key, ...c.payload.val() }))
-                )
-            )
+            .pipe(map(ch => ch.map(c => ({ name: c.payload.key, ...c.payload.val() }))))
             .subscribe(sandwiches => (this.userSandwiches = sandwiches));
 
         this.sandwichForm = this.formBuilder.group({
@@ -50,10 +46,7 @@ export class SandwichComponent implements OnInit {
             return;
         } else {
             this.sandwichForm.value.price = this.getPrice();
-            this.bs.addSandwich(
-                this.sandwichForm.value.name,
-                this.sandwichForm.value
-            );
+            this.bs.addSandwich(this.sandwichForm.value.name, this.sandwichForm.value);
             this.sandwichForm.patchValue({ name: "" });
             this.sandwichFormError = false;
             this.createModule = false;

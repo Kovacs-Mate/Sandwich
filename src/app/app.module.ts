@@ -25,6 +25,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FooterComponent } from './components/footer/footer.component';
 import { SandwichDetailsComponent } from './components/sandwich/sandwich-details/sandwich-details.component';
 import { OrderListComponent } from './components/cart/order-list/order-list.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { CheckOutComponent } from './components/cart/check-out/check-out.component';
 
 @NgModule({
     declarations: [
@@ -40,7 +42,9 @@ import { OrderListComponent } from './components/cart/order-list/order-list.comp
         VerifyEmailComponent,
         FooterComponent,
         SandwichDetailsComponent,
-        OrderListComponent
+        OrderListComponent,
+        OrdersComponent,
+        CheckOutComponent
     ],
     imports: [
         BrowserModule,

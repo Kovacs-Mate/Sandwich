@@ -26,13 +26,15 @@
     <ul class="navbar-nav  custom-font-2">
 
       <li class="nav-item">
-        <a class="nav-link"
+        <a (click)="collapse()"
+           class="nav-link"
            routerLink="/home"
            routerLinkActive="active">Home</a>
       </li>
 
       <li class="nav-item">
         <a *ngIf="loggedIn"
+           (click)="collapse()"
            class="nav-link"
            routerLink="/sandwich"
            routerLinkActive="active">Create</a>
@@ -40,6 +42,7 @@
 
       <li class="nav-item">
         <a *ngIf="loggedIn"
+           (click)="collapse()"
            class="nav-link"
            routerLink="/cart"
            routerLinkActive="active">Cart</a>
@@ -47,13 +50,15 @@
 
       <li class="nav-item">
         <a *ngIf="loggedIn"
+           (click)="collapse()"
            class="nav-link"
-           routerLink="/cart"
+           routerLink="/orders"
            routerLinkActive="active">My Orders</a>
       </li>
 
       <li class="nav-item">
         <a *ngIf="loggedIn"
+           (click)="collapse()"
            class="nav-link"
            routerLink="/userSettings"
            routerLinkActive="active">My Account</a>
@@ -61,6 +66,7 @@
 
       <li class="nav-item">
         <a *ngIf="!loggedIn"
+           (click)="collapse()"
            class="nav-link"
            routerLink="/login"
            routerLinkActive="active">Log In</a>

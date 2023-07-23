@@ -1,5 +1,6 @@
 export interface Sandwich {
     id: number;
+    number: number;
     name: string;
     price: number;
     qty: number;

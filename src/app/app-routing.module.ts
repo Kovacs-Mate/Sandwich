@@ -8,10 +8,12 @@ import { LoginComponent } from "./auth/login/login.component";
 import { ResetPasswordComponent } from "./auth/reset-password/reset-password.component";
 import { UserSettingsComponent } from "./auth/user-settings/user-settings.component";
 import { VerifyEmailComponent } from "./auth/verify-email/verify-email.component";
+import { OrdersComponent } from "./components/orders/orders.component";
 
 const routes: Routes = [
     { path: "home", component: HomeComponent },
     { path: "sandwich", component: SandwichComponent },
+    { path: "orders", component: OrdersComponent },
     { path: "cart", component: CartComponent },
     { path: "register", component: RegisterComponent },
     { path: "login", component: LoginComponent },

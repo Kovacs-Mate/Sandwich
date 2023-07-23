@@ -50,8 +50,6 @@ export class UserSettingsComponent implements OnInit {
         this.bs.getUser(this.userUID).subscribe(data => {
             this.user = data;
 
-            console.log("user: ", this.user);
-
             this.userForm = this.formBuilder.group({
                 firstName: [this.user.firstName, Validators.required],
                 lastName: [this.user.lastName, Validators.required],

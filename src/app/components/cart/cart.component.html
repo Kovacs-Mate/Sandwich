@@ -1,8 +1,17 @@
 <div class="bg-image"></div>
 <div class="nav-placeholder"></div>
 
+<!-- CHECK OUT MODULE -->
 
-<div class="container-fluid d-flex flex-column justify-content-center align-items-center mx-0 px-0 content">
+<app-check-out *ngIf="checkOutModuel"
+               [(orderList)]="orderList"
+               [(checkOutModule)]="checkOutModuel"
+               [user]="user"
+               [(thankYou)]="thankYou"
+               [totalPrice]="totalPrice()"></app-check-out>
+
+<div *ngIf="orderList.length !== 0"
+     class="container-fluid d-flex flex-column align-items-center mx-0 px-0 mt-5 content">
 
   <!-- LIST -->
 
@@ -17,7 +26,28 @@
   <!-- TOTAL PRICE -->
   <div class="total m-1">
     <h1 class="m-3">Total price: {{totalPrice()}} Ft</h1>
-    <button class="btn btn-primary btn-lg mb-4"
+    <!-- PLACE ORDER -->
+    <button (click)="placeOrder()"
+            class="btn btn-primary btn-lg mb-4"
             type="button">Place Order</button>
+  </div>
+</div>
+
+<!-- MESSAGE BOXES -->
+
+<!-- CART EMPTY -->
+<div *ngIf="orderList.length == 0 && thankYou == false"
+     class="container-fluid d-flex flex-column align-items-center mx-0 px-0 content">
+
+  <div class="total mt-5 py-5">
+    <h1>Your cart is empty.</h1>
+  </div>
+</div>
+<!-- THANK YOU -->
+<div *ngIf="thankYou"
+     class="container-fluid d-flex flex-column align-items-center mx-0 px-0 content">
+
+  <div class="total mt-5 py-5">
+    <h1 style="color: #72d375 ;">Thank you for your order!</h1>
   </div>
 </div>

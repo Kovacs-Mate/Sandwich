@@ -60,14 +60,13 @@ export class SandwichDetailsComponent implements OnInit {
     addOrder() {
         const resetQty = 1;
         this.orderInfo = true;
-        let currentList = JSON.parse(
-            localStorage.getItem("orderList") || "[]"
-        ) as Sandwich[];
+        let currentList = JSON.parse(localStorage.getItem("orderList") || "[]") as Sandwich[];
 
         if (!Array.isArray(currentList)) {
             currentList = [];
         }
 
+        this.sandwich.number = new Date().getTime();
         currentList.push(this.sandwich);
         localStorage.setItem("orderList", JSON.stringify(currentList));
 
