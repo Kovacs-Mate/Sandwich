@@ -1,10 +1,6 @@
 .bg-image {
-    background: linear-gradient(
-            -150deg,
-            rgba(255, 255, 255, 0),
-            rgba(0, 0, 0, 0.8) 80%
-        ),
-        url(../../../assets/background_02.jpg);
+    background: linear-gradient(-150deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.8) 80%),
+        url(../../../assets/background_01.jpg);
     height: 100vh;
     width: 100vw;
     background-repeat: no-repeat;
@@ -14,4 +10,29 @@
     top: 0;
     left: 0;
     z-index: -100;
+}
+.pending {
+    background-color: rgba(27, 128, 153, 0.3);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+.preparation {
+    background-color: rgba(153, 103, 27, 0.3);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+.onTheWay {
+    background-color: rgba(119, 153, 27, 0.3);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+}
+
+.hr {
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    opacity: 0.5;
 }

@@ -21,16 +21,19 @@
 <div *ngIf="collapseInfo === false"
      class="card-collapse">
     <div class="ingredients">
-        <p class="fst-italic fs-4 text-decoration-underline py-0 my-1">Ingredients:</p>
-        <p>
-            {{ sandwich.bread }}, {{ sandwich.meat }}, {{ sandwich.cheese }},
-            {{ sandwich.vegetables }}, {{ sandwich.sauce }}
-        </p>
+        <p class="fst-italic fs-4 text-decoration-underline py-0 my-1 mb-2">Ingredients:</p>
+
+        <p class="my-1 mx-5"><span class="text-decoration-underline">Bread:</span> {{sandwich.bread}}</p>
+        <p class="my-1 mx-5"><span class="text-decoration-underline">Meat:</span> {{sandwich.meat}}</p>
+        <p class="my-1 mx-5"><span class="text-decoration-underline">Cheese:</span> {{sandwich.cheese}}</p>
+        <p class="my-1 mx-5"><span class="text-decoration-underline">Vegetables:</span> {{sandwich.vegetables}}</p>
+        <p class="my-1 mx-5"><span class="text-decoration-underline">Sauce:</span> {{sandwich.sauce}}</p>
+
     </div>
 
     <button (click)="deleteSandwich(sandwich.name)"
             type="button"
-            class="btn btn-primary my-3">Delete</button>
+            class="btn btn-primary my-4">Delete</button>
 </div>
 
 <!-- ORDER -->

@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from "@angular/core";
 import { AngularFireDatabase, AngularFireList } from "@angular/fire/compat/database";
 import { Observable, map } from "rxjs";
+import { Orders } from "src/app/shared/interfaces/orders";
 import { Sandwich } from "src/app/shared/interfaces/sandwich";
 import { User } from "src/app/shared/interfaces/user";
 
@@ -11,12 +12,10 @@ export class BaseService {
     usersRef: AngularFireList<any>;
     sandwichesRef: AngularFireList<any>;
     cartListRef: AngularFireList<any>;
-    ordersRef: AngularFireList<any>;
+    userOrderListRef: AngularFireList<any>;
 
     constructor(private afDB: AngularFireDatabase) {
         this.usersRef = this.afDB.list("/users");
-        this.ordersRef = this.afDB.list("/orders");
-        console.log(this.ordersRef);
     }
 
     //USERS
@@ -73,7 +72,7 @@ export class BaseService {
         return this.sandwichesRef.remove(name);
     }
 
-    // CART
+    // CART  <- NOT IN USE
 
     updateCart() {
         const UID = JSON.parse(localStorage.getItem("user")!)?.uid;
@@ -139,27 +138,36 @@ export class BaseService {
         const ID = new Date().getTime();
         const UID = JSON.parse(localStorage.getItem("user")!)?.uid;
         const orderList: Array<Sandwich> = JSON.parse(localStorage.getItem("orderList") || "[]");
-        this.getUser(UID).subscribe(data => {
-            let user: User = data;
 
-            if (data) {
-                this.afDB.object(`/orders/${ID}`).set({
-                    order: orderList,
-                    userData: {
-                        userUid: UID,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        email: user.email,
-                        phone: user.phone,
-                        address: {
-                            zipCode: user.address.zipCode,
-                            city: user.address.city,
-                            street: user.address.street,
-                            houseNumber: user.address.houseNumber
-                        }
-                    }
-                });
-            }
-        });
+        const orderData: Orders = {
+            status: "pending",
+            orders: []
+        };
+
+        for (let i = 0; i < orderList.length; i++) {
+            const item = orderList[i];
+            const itemData: Sandwich = {
+                bread: item.bread,
+                meat: item.meat,
+                cheese: item.cheese,
+                vegetables: item.vegetables,
+                sauce: item.sauce,
+                qty: item.qty,
+                price: item.price,
+                name: item.name,
+                id: item.id,
+                number: item.number
+            };
+
+            orderData.orders.push(itemData);
+        }
+
+        this.afDB.object(`/orders/${UID}/${ID}/`).set(orderData);
+    }
+
+    getUserOrders() {
+        const UID = JSON.parse(localStorage.getItem("user")!)?.uid;
+        this.userOrderListRef = this.afDB.list(`orders/${UID}`);
+        return this.userOrderListRef;
     }
 }
