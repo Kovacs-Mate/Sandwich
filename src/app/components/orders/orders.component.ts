@@ -11,6 +11,9 @@ import { Sandwich } from "src/app/shared/interfaces/sandwich";
 })
 export class OrdersComponent implements OnInit {
     userOrders: Array<Orders> = [];
+    pendingOrders: any = [];
+    preparationOrders: any = [];
+    onTheWayOrders: any = [];
 
     constructor(private bs: BaseService) {}
 
@@ -26,7 +29,16 @@ export class OrdersComponent implements OnInit {
             .subscribe(items => {
                 this.userOrders = items;
 
-                console.log("orders: ", this.userOrders);
+                for (let i = 0; i < items.length; i++) {
+                    const order = items[i];
+                    if (order.status === "pending") {
+                        this.pendingOrders.push(order);
+                    } else if (order.status === "preparation") {
+                        this.preparationOrders.push(order);
+                    } else {
+                        this.onTheWayOrders.push(order);
+                    }
+                }
             });
     }
 

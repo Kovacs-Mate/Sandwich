@@ -1,98 +1,83 @@
 <div class="bg-image"></div>
 <div class="nav-placeholder"></div>
 
-<!-- PENDING ORDERS LIST -->
+<div class="container-fluid d-flex flex-column align-items-center p-0 m-0 content">
 
-<div *ngFor="let order of userOrders"
-     class="container-fluid d-flex flex-column align-items-center mx-0 px-0 content">
+  <!-- PENDING ORDERS LIST -->
 
-  <div *ngIf="order.status === 'pending'"
-       class="container-fluid d-flex flex-column justify-content-center align-items-center m-0 p-0">
-    <div *ngFor="let order of userOrders"
-         class="container rounded d-flex flex-column justify-content-center mx-5 mt-5 pending">
-      <div class="d-flex flex-nowrap justify-content-between align-items-end">
-        <h3 class="m-0 mt-2 p-0">Pending...</h3>
-      </div>
-      <hr class="m-0 mb-3 p-0">
 
-      <!-- ORDERS LIST -->
-      <div *ngFor="let item of order.orders"
-           class="d-flex flex-nowrap justify-content-between align-items-center">
-        <h5>{{item.qty}}X {{item.name}} </h5>
-        <h5 style="white-space: nowrap;">{{item.qty * item.price}} Ft</h5>
-      </div>
+  <div *ngFor="let order of pendingOrders"
+       class="container rounded d-flex flex-column justify-content-center mx-5 mt-5 pending">
+    <div class="d-flex flex-nowrap justify-content-between align-items-end">
+      <h3 class="m-0 mt-2 p-0">Pending...</h3>
+    </div>
+    <hr class="m-0 mb-3 p-0">
 
-      <hr class="m-0 mb-3 p-0">
+    <!-- ORDERS LIST -->
+    <div *ngFor="let item of order.orders"
+         class="d-flex flex-nowrap justify-content-between align-items-center">
+      <h5>{{item.qty}}X {{item.name}} </h5>
+      <h5 style="white-space: nowrap;">{{item.qty * item.price}} Ft</h5>
+    </div>
 
-      <!-- TOTAL PRICE -->
-      <div class="d-flex flex-nowrap justify-content-between align-items-center">
-        <h5>Total price:</h5>
-        <h5>{{totalPrice(order.orders)}} Ft</h5>
-      </div>
+    <hr class="m-0 mb-3 p-0">
+
+    <!-- TOTAL PRICE -->
+    <div class="d-flex flex-nowrap justify-content-between align-items-center">
+      <h5>Total price:</h5>
+      <h5>{{totalPrice(order.orders)}} Ft</h5>
     </div>
   </div>
-</div>
 
-<!-- PREPAIRING ORDERS LIST -->
 
-<div *ngFor="let order of userOrders"
-     class="container-fluid d-flex flex-column align-items-center mx-0 px-0 content">
+  <!-- PREPAIRING ORDERS LIST -->
 
-  <div *ngIf="order.status === 'preparation'"
-       class="container-fluid d-flex flex-column justify-content-center align-items-center m-0 p-0">
-    <div *ngFor="let order of userOrders"
-         class="container rounded d-flex flex-column justify-content-center mx-5 mt-5 preparation">
-      <div class="d-flex flex-nowrap justify-content-between align-items-end">
-        <h3 class="m-0 mt-2 p-0">Preparation...</h3>
-      </div>
-      <hr class="m-0 mb-3 p-0">
+  <div *ngFor="let order of preparationOrders"
+       class="container rounded d-flex flex-column justify-content-center mx-5 mt-5 preparation">
+    <div class="d-flex flex-nowrap justify-content-between align-items-end">
+      <h3 class="m-0 mt-2 p-0">Preparation...</h3>
+    </div>
+    <hr class="m-0 mb-3 p-0">
 
-      <!-- ORDERS LIST -->
-      <div *ngFor="let item of order.orders"
-           class="d-flex flex-nowrap justify-content-between align-items-center">
-        <h5>{{item.qty}}X {{item.name}} </h5>
-        <h5 style="white-space: nowrap;">{{item.qty * item.price}} Ft</h5>
-      </div>
+    <!-- ORDERS LIST -->
+    <div *ngFor="let item of order.orders"
+         class="d-flex flex-nowrap justify-content-between align-items-center">
+      <h5>{{item.qty}}X {{item.name}} </h5>
+      <h5 style="white-space: nowrap;">{{item.qty * item.price}} Ft</h5>
+    </div>
 
-      <hr class="m-0 mb-3 p-0">
+    <hr class="m-0 mb-3 p-0">
 
-      <!-- TOTAL PRICE -->
-      <div class="d-flex flex-nowrap justify-content-between align-items-center">
-        <h5>Total price:</h5>
-        <h5>{{totalPrice(order.orders)}} Ft</h5>
-      </div>
+    <!-- TOTAL PRICE -->
+    <div class="d-flex flex-nowrap justify-content-between align-items-center">
+      <h5>Total price:</h5>
+      <h5>{{totalPrice(order.orders)}} Ft</h5>
     </div>
   </div>
-</div>
 
-<!-- DELIVERY ORDERS LIST -->
+  <!-- DELIVERY ORDERS LIST -->
 
-<div *ngFor="let order of userOrders"
-     class="container-fluid d-flex flex-column align-items-center mx-0 px-0 content">
+  <div *ngFor="let order of onTheWayOrders"
+       class="container rounded d-flex flex-column justify-content-center mx-5 mt-5 onTheWay">
+    <div class="d-flex flex-nowrap justify-content-between align-items-end">
+      <h3 class="m-0 mt-2 p-0">On the way...</h3>
+    </div>
+    <hr class="m-0 mb-3 p-0">
 
-  <div *ngIf="order.status === 'onTheWay'"
-       class="container-fluid d-flex flex-column justify-content-center align-items-center m-0 p-0">
-    <div *ngFor="let order of userOrders"
-         class="container rounded d-flex flex-column justify-content-center mx-5 mt-5 onTheWay">
-      <div class="d-flex flex-nowrap justify-content-between align-items-end">
-        <h3 class="m-0 mt-2 p-0">On the way...</h3>
-      </div>
-      <hr class="m-0 mb-3 p-0">
+    <!-- ORDERS LIST -->
+    <div *ngFor="let item of order.orders"
+         class="d-flex flex-nowrap justify-content-between align-items-center">
+      <h5>{{item.qty}}X {{item.name}} </h5>
+      <h5 style="white-space: nowrap;">{{item.qty * item.price}} Ft</h5>
+    </div>
 
-      <!-- ORDERS LIST -->
-      <div *ngFor="let item of order.orders"
-           class="d-flex flex-nowrap justify-content-between align-items-center">
-        <h5>{{item.qty}}X {{item.name}} </h5>
-        <h5 style="white-space: nowrap;">{{item.qty * item.price}} Ft</h5>
-      </div>
+    <hr class="m-0 mb-3 p-0">
 
-      <hr class="m-0 mb-3 p-0">
-
-      <!-- TOTAL PRICE -->
-      <div class="d-flex flex-nowrap justify-content-between align-items-center">
-        <h5>Total price:</h5>
-        <h5>{{totalPrice(order.orders)}} Ft</h5>
-      </div>
+    <!-- TOTAL PRICE -->
+    <div class="d-flex flex-nowrap justify-content-between align-items-center">
+      <h5>Total price:</h5>
+      <h5>{{totalPrice(order.orders)}} Ft</h5>
     </div>
   </div>
+
 </div>

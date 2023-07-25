@@ -12,23 +12,29 @@
     z-index: -100;
 }
 .pending {
-    background-color: rgba(27, 128, 153, 0.3);
-    backdrop-filter: blur(20px);
+    background-color: rgba(40, 106, 177, 0.4);
+    border: 1px solid rgba(40, 106, 177, 1);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
     max-width: 600px;
 }
 
 .preparation {
-    background-color: rgba(153, 103, 27, 0.3);
-    backdrop-filter: blur(20px);
+    background-color: rgba(17, 141, 137, 0.4);
+    border: 1px solid rgba(17, 141, 137, 1);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
     max-width: 600px;
 }
 
 .onTheWay {
-    background-color: rgba(119, 153, 27, 0.3);
-    backdrop-filter: blur(20px);
+    background-color: rgba(42, 114, 33, 0.4);
+    border: 1px solid rgba(42, 114, 33, 1);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
     max-width: 600px;
 }
 

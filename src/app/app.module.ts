@@ -22,11 +22,10 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { Environment } from "./core/environments/environment";
 import { VerifyEmailComponent } from "./auth/verify-email/verify-email.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { FooterComponent } from './components/footer/footer.component';
-import { SandwichDetailsComponent } from './components/sandwich/sandwich-details/sandwich-details.component';
-import { OrderListComponent } from './components/cart/order-list/order-list.component';
-import { OrdersComponent } from './components/orders/orders.component';
-import { CheckOutComponent } from './components/cart/check-out/check-out.component';
+import { SandwichDetailsComponent } from "./components/sandwich/sandwich-details/sandwich-details.component";
+import { OrderListComponent } from "./components/cart/order-list/order-list.component";
+import { OrdersComponent } from "./components/orders/orders.component";
+import { CheckOutComponent } from "./components/cart/check-out/check-out.component";
 
 @NgModule({
     declarations: [
@@ -40,7 +39,6 @@ import { CheckOutComponent } from './components/cart/check-out/check-out.compone
         SandwichComponent,
         NavbarComponent,
         VerifyEmailComponent,
-        FooterComponent,
         SandwichDetailsComponent,
         OrderListComponent,
         OrdersComponent,
