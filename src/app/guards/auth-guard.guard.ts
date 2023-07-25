@@ -6,18 +6,24 @@ import { FireAuthService } from "../core/services/fire-auth.service";
     providedIn: "root"
 })
 export class AuthGuard {
-    isLoggedIn: boolean = false;
-
     constructor(public authService: FireAuthService, public router: Router) {}
 
     canActivate(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<boolean> | Promise<boolean> | UrlTree | boolean {
-        this.authService.loggedIn.subscribe(data => (this.isLoggedIn = data));
-        if (this.isLoggedIn !== true) {
+        if (this.isLoggedIn() !== true) {
             this.router.navigate(["/login"]);
         }
         return true;
+    }
+
+    isLoggedIn(): boolean {
+        const user = JSON.parse(localStorage.getItem("user")!);
+        if (user == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

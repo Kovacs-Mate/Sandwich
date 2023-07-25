@@ -4,7 +4,6 @@ import { User } from "src/app/shared/interfaces/user";
 import { AngularFireDatabase } from "@angular/fire/compat/database";
 import { Router } from "@angular/router";
 import { BehaviorSubject, Observable, map } from "rxjs";
-import { BaseService } from "./base.service";
 
 @Injectable({
     providedIn: "root"
@@ -14,12 +13,7 @@ export class FireAuthService {
     loginError: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     userData: any;
 
-    constructor(
-        private afAuth: AngularFireAuth,
-        private afDb: AngularFireDatabase,
-        private bs: BaseService,
-        private router: Router
-    ) {
+    constructor(private afAuth: AngularFireAuth, private afDb: AngularFireDatabase, private router: Router) {
         this.loggedIn = this.afAuth.authState.pipe(map(user => !!user));
         this.afAuth.authState.subscribe(user => {
             if (user) {
@@ -66,7 +60,6 @@ export class FireAuthService {
                 if (user?.emailVerified) {
                     this.loginError.next(false);
                     localStorage.setItem("user", JSON.stringify(user));
-                    // this.bs.getCart();   <-- NEED FIX
                     this.router.navigate(["/sandwich"]);
                 } else {
                     this.loginError.next(true);
@@ -78,7 +71,6 @@ export class FireAuthService {
     }
 
     logout() {
-        // this.bs.updateCart();  <-- NEED FIX
         localStorage.removeItem("orderList");
         this.afAuth.signOut();
     }
